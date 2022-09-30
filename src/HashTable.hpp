@@ -33,14 +33,16 @@ Urna::Urna(int size_votos,int size_cand){
 
     this->tabela_cand = new Cand[this->size_c];
 } 
+ // ver melhor dps
 
-void Urna::insert_cadidato(int candidato_id, char candidato_nome){
+void Urna::insert_candidato(int candidato_id,const char candidato_nome[]){
     int hash = this->hash_cand(candidato_id);
 
     this->tabela_cand[hash] = * new Cand(); //  aq vai ter q fazer o negocio de 
     this->tabela_cand[hash].candidato_id=candidato_id;
-    this->tabela_cand[hash].candidato_nome=candidato_nome;
-    
+    for (int i=0; i<sizeof(candidato_nome); i++) {
+            this->tabela_cand[hash].candidato_nome[i]=candidato_nome[i];
+    }
     // colocar no da frente caso o lugar esteja ocupado, mas se pah q a gente desiste disso de colocar o candidato assim
     // e so pega uma lista quando inicializa a estrutura e armazena ela
     // Pensando melhor se pahq  vai precisar sim, para conseguir usar legal os negocios dos cand
@@ -56,14 +58,14 @@ void Urna::insert_cadidato(int candidato_id, char candidato_nome){
 
 }
 
-
-
-void Urna::insert_voto(int id_usuario, int id_candidato, char regiao){ //esquecer da data por enquanto
+void Urna::insert_voto(int id_usuario, int id_candidato, char regiao[]){ //esquecer da data por enquanto
 
     this->tabela_votos[this->quant_v] = * new Voto(); // NAO TENHO IDEIA COMO ESTOU USANDO ESSAS PORRAS DE PONTEIROS
     this->tabela_votos[this->quant_v].id_candidato = id_candidato;
     this->tabela_votos[this->quant_v].id_usuario = id_usuario;
-    this->tabela_votos[this->quant_v].regiao = regiao;
+    for (int i=0; i<sizeof(regiao); i++) {
+        this->tabela_votos[this->quant_v].regiao[i] = regiao[i];
+    }
     this->tabela_votos[this->quant_v].recibo = this->quant_v;
     
     int timeagr = time(0);
