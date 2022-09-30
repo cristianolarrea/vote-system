@@ -10,7 +10,7 @@ class Urna{ // mudar esse nome
         int recibo; 
         int id_usuario;
         int id_candidato;
-        char regiao; //!!! vetor de 2 letras, não lembro agora, ACHO Q É ISSO
+        char regiao[2]; //!!! vetor de 2 letras, não lembro agora, ACHO Q É ISSO
         Data * data_voto; //perguntar sobre, acho q tem q usar uma biblioteca pega a hora certinho de quando computa 1 voto, lembro do prof flaar algo assim
     
         Voto(); // tirei a data por enquanto
