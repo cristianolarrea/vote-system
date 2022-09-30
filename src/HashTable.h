@@ -1,8 +1,9 @@
 #ifndef HASH_TABLE
 #define HASH_TABLE
 #include "Data.h"
+#include <ctime>
 
-class HashTable {
+class Urna{ // mudar esse nome
 
     struct Voto
     {
@@ -10,9 +11,24 @@ class HashTable {
         int id_usuario;
         int id_candidato;
         char regiao; //!!! vetor de 2 letras, não lembro agora, ACHO Q É ISSO
-        //Data data_voto; //perguntar sobre, acho q tem q usar uma biblioteca pega a hora certinho de quando computa 1 voto, lembro do prof flaar algo assim
+        Data * data_voto; //perguntar sobre, acho q tem q usar uma biblioteca pega a hora certinho de quando computa 1 voto, lembro do prof flaar algo assim
     
-        Voto(int id_usuario, int id_candidato, char regiao); // tirei a data por enquanto
+        Voto(); // tirei a data por enquanto
+    };
+
+    struct Data
+    {
+        int ano; 
+        int mes;
+        int dia;
+        int hora;
+        int minuto;
+        int segundo;
+    
+        Data();
+
+        void cataloga(time_t); 
+
     };
 
     // id do candidato pode ser qualquer um
@@ -25,23 +41,24 @@ class HashTable {
         int candidato_id; 
         char candidato_nome; // ver como faz pra salvar string
 
-        Cand(int candidato_id,char candidato_nome);
+        Cand();
     };
 
-    int size_v = 100; 
-    int quant_v = 0;
+    int size_v; 
+    int quant_v;
 
-    int size_c = 10;
-    int quant_c = 0;
-
-    Voto * tabela_votos[100];// ver melhor isso de comecar fixo, qria colocar o size aq
-    Cand * tabela_cand[10];// ver melhor isso de comecar fixo
+    int size_c;
+    int quant_c;
+    
+    Voto * tabela_votos;// ver melhor isso de comecar fixo, qria colocar o size aq
+    
+    Cand * tabela_cand;// ver melhor isso de comecar fixo
 
 
     public: 
-        HashTable();
+        Urna(int size_votos,int size_cand);
 
-        ~HashTable();
+        ~Urna();
 
         void insert_cadidato(int candidato_id, char candidato_nome);
 
@@ -49,7 +66,7 @@ class HashTable {
         void insert_voto(int id_usuario, int id_candidato, char regiao); //esquecer da data por enquanto
         
         // ser capaz de achar o voto com o recibo
-        Voto* search(int recibo); // n tenho certeza se esse é o retorno
+        Voto search(int recibo); // n tenho certeza se esse é o retorno
         
         // um adm devera ser capaz de soliciar um relatorio com todos os votos ate o momento
         void relatorio_votos(); // ainda não sei oq vai retornar direito, talvez uma lista de ponteiros de voto
@@ -57,16 +74,14 @@ class HashTable {
         // um adm pode soliciar relatorio com top10 candidatos
         void relatorio_candidato(); // ainda não sei o retorno
 
-             
     private:
         //unsigned hash(unsigned key);
         
-        void resize_voto();
+        void resize_voto(); // feito 
 
-        int hash_cand(int);
-        void resize_cand();
-
-
+        int hash_cand(int ); // feito 
+        void resize_cand(); // feito 
+        
 };
 
 #include "HashTable.hpp"
