@@ -5,6 +5,20 @@
 
 class Urna{ // mudar esse nome
 
+    struct Data
+    {
+        int ano; 
+        int mes;
+        int dia;
+        int hora;
+        int minuto;
+        int segundo;
+        
+        Data(int);
+    
+
+    };
+
     struct Voto
     {
         int recibo; 
@@ -16,20 +30,6 @@ class Urna{ // mudar esse nome
         Voto(); // tirei a data por enquanto
     };
 
-    struct Data
-    {
-        int ano; 
-        int mes;
-        int dia;
-        int hora;
-        int minuto;
-        int segundo;
-    
-        Data();
-
-        void cataloga(time_t); 
-
-    };
 
     // id do candidato pode ser qualquer um
     // diferente do hashtable q usamos para os votos
@@ -82,6 +82,8 @@ class Urna{ // mudar esse nome
         int hash_cand(int ); // feito 
         void resize_cand(); // feito 
         
+        bool a_mais_recente_que_b(Data data_a, Data data_b);
+
 };
 
 #include "HashTable.hpp"
