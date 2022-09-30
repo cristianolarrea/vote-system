@@ -1,4 +1,3 @@
-#include "Data.h"
 #include "HashTable.h"
 
 #include <vector>
@@ -15,7 +14,6 @@ using std::vector;
 using std::list;
 using std::to_string;
 using std::stringstream;
-
 
 
 int main() {
