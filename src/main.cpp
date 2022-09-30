@@ -23,18 +23,18 @@ int main() {
     
     Urna * urna = new Urna(2,2);
 
-    // urna->insert_voto(1,2,'0');
-    // urna->insert_voto(2,3,'1');
-    // urna->insert_voto(3,1,'2');
-    // urna->insert_voto(6,2,'3');
-    // urna->insert_voto(1,2,'4');
-    // urna->insert_voto(2,3,'5');
-    // urna->insert_voto(3,1,'6');
-    // urna->insert_voto(6,2,'7');
-    // urna->insert_voto(1,2,'4');
-    // urna->insert_voto(2,3,'5');
-    // // urna->insert_voto(3,1,'6');
-    // // urna->insert_voto(6,2,'7');
+    // urna->insert_voto(1,2,"RS");
+    // urna->insert_voto(2,3,"RJ");
+    // urna->insert_voto(3,1,"SP");
+    // urna->insert_voto(6,2,"RJ");
+    // urna->insert_voto(1,2,"PA");
+    // urna->insert_voto(2,3,"PA");
+    // urna->insert_voto(3,1,"PI");
+    // urna->insert_voto(6,2,"RS");
+    // urna->insert_voto(1,2,"AM");
+    // urna->insert_voto(2,3,"PR");
+    // urna->insert_voto(3,1,"AC");
+    // urna->insert_voto(6,2,"DF");
 
 
     // urna->search(1);
@@ -47,9 +47,9 @@ int main() {
 
     // urna->size();
 
-    // urna->insert_cadidato(1,'F');
-    // urna->insert_cadidato(2,'H');
-    // urna->insert_cadidato(3,'J');
+    // urna->insert_candidato(1,"Fabio");
+    // urna->insert_candidato(2,"Heitor");
+    // urna->insert_candidato(3,"Julio");
 
 
 
