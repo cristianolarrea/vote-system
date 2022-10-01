@@ -13,9 +13,7 @@
 using std::cout;
 using std::endl;
 using std::string;
-using std::vector;
-using std::list;
-using std::to_string;
+
 using std::stringstream;
 
 int randNum;
