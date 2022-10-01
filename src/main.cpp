@@ -20,7 +20,6 @@ using std::stringstream;
 
 int randNum;
 
-<<<<<<< HEAD
 void write_csv() {
     std::ofstream myfile;
     myfile.open("relatorio.csv");
@@ -28,8 +27,6 @@ void write_csv() {
     myfile.close();
 }
 
-=======
->>>>>>> master
 int main() {
     std::cout << "ola" << (9+9) << std::endl; 
     
