@@ -1,5 +1,6 @@
 #ifndef HASH_TABLE
 #define HASH_TABLE
+
 #include "Data.h"
 #include <ctime>
 
