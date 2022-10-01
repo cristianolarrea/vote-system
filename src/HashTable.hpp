@@ -2,13 +2,7 @@
 #include <iostream>
 #include <ctime>
 
-Urna::Voto::Voto(){}
-
-Urna::Cand::Cand(){}
-
-Urna::Data::Data(){
-    int time = 7;
-
+Urna::Data::Data(int time){
     this->ano = 1970 + (time / 31536000);
     time = time % 31536000;
 
@@ -27,6 +21,10 @@ Urna::Data::Data(){
     this->segundo = time;
 }
 
+Urna::Voto::Voto(){}
+
+Urna::Cand::Cand(){}
+
 Urna::Urna(int size_votos,int size_cand){ 
     this->size_v = size_votos;
     this->size_c = size_cand;
@@ -34,8 +32,8 @@ Urna::Urna(int size_votos,int size_cand){
     this->tabela_votos = new Voto[this->size_v];
 
     this->tabela_cand = new Cand[this->size_c];
-
-} // ver melhor dps
+} 
+ // ver melhor dps
 
 void Urna::insert_candidato(int candidato_id,const char candidato_nome[]){
     int hash = this->hash_cand(candidato_id);
@@ -69,8 +67,12 @@ void Urna::insert_voto(int id_usuario, int id_candidato, char regiao[]){ //esque
         this->tabela_votos[this->quant_v].regiao[i] = regiao[i];
     }
     this->tabela_votos[this->quant_v].recibo = this->quant_v;
-    // time_t timeagr = time(0);
-    // this->tabela_votos[this->quant_v].data_voto = new Data();
+    
+    int timeagr = time(0);
+    Data * time_ = new Data(timeagr);
+
+    this->tabela_votos[this->quant_v].data_voto = time_;
+
 
     this->quant_v += 1;
     
@@ -87,7 +89,14 @@ Urna::Voto Urna::search(int recibo){
     std::cout<< "Recibo : " << this->tabela_votos[recibo].recibo <<std::endl;
     std::cout<< "Usuario : " << this->tabela_votos[recibo].id_usuario <<std::endl;
     std::cout<< "Região : " << this->tabela_votos[recibo].regiao <<std::endl;
-    std::cout<< "Data : " << "AINDA NAO FIZEMOS" <<std::endl;
+    int ano = this->tabela_votos[recibo].data_voto->ano;
+    int mes = this->tabela_votos[recibo].data_voto->mes;
+    int dia = this->tabela_votos[recibo].data_voto->dia;
+    int hora = this->tabela_votos[recibo].data_voto->hora;
+    int minuto = this->tabela_votos[recibo].data_voto->minuto;
+    int segundo = this->tabela_votos[recibo].data_voto->segundo;
+
+    std::cout<< "Data : " << dia <<"/" << mes <<"/" << ano << " - " << hora<<":"<<minuto<<":"<<segundo<<std::endl;
 
     return this->tabela_votos[recibo];
     // se pah q é para fazer um print com esse recibo 
@@ -110,7 +119,6 @@ void Urna::resize_voto(){
     delete [] this->tabela_votos;
 
     this->tabela_votos = newTable;
-    
 }
 
 
@@ -127,8 +135,27 @@ void Urna::resize_cand(){
     delete [] this->tabela_cand;
 
     this->tabela_cand = newTable;
-    
 }
 
+bool Urna::a_mais_recente_que_b(Data data_a, Data data_b){
+    if(data_a.ano > data_b.ano)
+    return true;
 
+    if(data_a.mes > data_b.mes)
+    return true;
+
+    if(data_a.dia > data_b.dia)
+    return true;
+
+    if(data_a.hora > data_b.hora)
+    return true;
+
+    if(data_a.minuto > data_b.minuto)
+    return true;
+
+    if(data_a.segundo > data_b.segundo)
+    return true;
+
+    return false;
+}
 
