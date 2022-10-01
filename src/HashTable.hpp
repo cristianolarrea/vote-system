@@ -38,18 +38,13 @@ Urna::Urna(int size_votos,int size_cand){
 void Urna::insert_candidato(int candidato_id,const char candidato_nome[]){
     int hash = this->hash_cand(candidato_id);
 
-    this->tabela_cand[hash] = * new Cand(); //  aq vai ter q fazer o negocio de 
+    this->tabela_cand[hash] = * new Cand();
     this->tabela_cand[hash].candidato_id=candidato_id;
     for (int i=0; i<sizeof(candidato_nome); i++) {
             this->tabela_cand[hash].candidato_nome[i]=candidato_nome[i];
     }
-    // colocar no da frente caso o lugar esteja ocupado, mas se pah q a gente desiste disso de colocar o candidato assim
-    // e so pega uma lista quando inicializa a estrutura e armazena ela
-    // Pensando melhor se pahq  vai precisar sim, para conseguir usar legal os negocios dos cand
     
     this->quant_c += 1;
-    std::cout<< "Colocamos id: " << this->tabela_cand[hash].candidato_id <<std::endl;
-    std::cout<< "Colocamos nome: " << this->tabela_cand[hash].candidato_nome <<std::endl;
 
     float alpha = this->quant_c / this->size_c;
     if (alpha>0.75){
@@ -58,7 +53,7 @@ void Urna::insert_candidato(int candidato_id,const char candidato_nome[]){
 
 }
 
-void Urna::insert_voto(int id_usuario, int id_candidato, char regiao[]){ //esquecer da data por enquanto
+int Urna::insert_voto(int id_usuario, int id_candidato, char regiao[]){ //esquecer da data por enquanto
 
     this->tabela_votos[this->quant_v] = * new Voto(); // NAO TENHO IDEIA COMO ESTOU USANDO ESSAS PORRAS DE PONTEIROS
     this->tabela_votos[this->quant_v].id_candidato = id_candidato;
@@ -66,7 +61,9 @@ void Urna::insert_voto(int id_usuario, int id_candidato, char regiao[]){ //esque
     for (int i=0; i<sizeof(regiao); i++) {
         this->tabela_votos[this->quant_v].regiao[i] = regiao[i];
     }
-    this->tabela_votos[this->quant_v].recibo = this->quant_v;
+    int recibo = this->quant_v;
+    this->tabela_votos[this->quant_v].recibo = recibo;
+
     
     int timeagr = time(0);
     Data * time_ = new Data(timeagr);
@@ -79,13 +76,15 @@ void Urna::insert_voto(int id_usuario, int id_candidato, char regiao[]){ //esque
     if (this->quant_v == this->size_v){
         this->resize_voto();
     }
+    return recibo;
 }
 
 Urna::Voto Urna::search(int recibo){
     // aqui to so retornando oq ele pede, não sei se tem q mostrar alguma coisa a mais
     // ou se tem q dar um print bonitinho da pessoa e as coisas do recibo
     // mas isso é coisa boba q tem q resolver dps, para achar o voto desse recibo é so isso
-   
+
+    std::cout<< "Id Candidato: " << this->tabela_votos[recibo].id_candidato <<std::endl;
     std::cout<< "Recibo : " << this->tabela_votos[recibo].recibo <<std::endl;
     std::cout<< "Usuario : " << this->tabela_votos[recibo].id_usuario <<std::endl;
     std::cout<< "Região : " << this->tabela_votos[recibo].regiao <<std::endl;

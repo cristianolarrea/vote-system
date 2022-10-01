@@ -6,17 +6,6 @@
 
 class Urna{ // mudar esse nome
 
-    struct Voto
-    {
-        int recibo; 
-        int id_usuario;
-        int id_candidato;
-        char regiao[2]; //!!! vetor de 2 letras, não lembro agora, ACHO Q É ISSO
-        Data * data_voto; //perguntar sobre, acho q tem q usar uma biblioteca pega a hora certinho de quando computa 1 voto, lembro do prof flaar algo assim
-    
-        Voto(); // tirei a data por enquanto
-    };
-
     struct Data
     {
         int ano; 
@@ -75,7 +64,7 @@ class Urna{ // mudar esse nome
         void insert_candidato(int candidato_id, const char candidato_nome[]);
 
         // ser capaz de votar
-        void insert_voto(int id_usuario, int id_candidato, char regiao[2]); //esquecer da data por enquanto
+        int insert_voto(int id_usuario, int id_candidato, char regiao[2]); //esquecer da data por enquanto
         
         // ser capaz de achar o voto com o recibo
         Voto search(int recibo); // n tenho certeza se esse é o retorno
