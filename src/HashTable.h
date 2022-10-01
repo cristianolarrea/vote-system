@@ -5,17 +5,6 @@
 
 class Urna{ // mudar esse nome
 
-    struct Voto
-    {
-        int recibo; 
-        int id_usuario;
-        int id_candidato;
-        char regiao[2]; //!!! vetor de 2 letras, não lembro agora, ACHO Q É ISSO
-        Data * data_voto; //perguntar sobre, acho q tem q usar uma biblioteca pega a hora certinho de quando computa 1 voto, lembro do prof flaar algo assim
-    
-        Voto(); // tirei a data por enquanto
-    };
-
     struct Data
     {
         int ano; 
@@ -26,7 +15,7 @@ class Urna{ // mudar esse nome
         int segundo;
         
         Data(int);
-    
+        Data(int ano,int mes,int dia,int hora=0,int minuto=0,int segundo=0);
 
     };
 
@@ -51,7 +40,7 @@ class Urna{ // mudar esse nome
     {
         int candidato_id; 
         char candidato_nome[30]; // ver como faz pra salvar string
-
+        int quantidade_votos;
         Cand();
     };
 
@@ -65,6 +54,7 @@ class Urna{ // mudar esse nome
     
     Cand * tabela_cand;// ver melhor isso de comecar fixo
 
+  
 
     public: 
         Urna(int size_votos,int size_cand);
@@ -80,20 +70,34 @@ class Urna{ // mudar esse nome
         Voto search(int recibo); // n tenho certeza se esse é o retorno
         
         // um adm devera ser capaz de soliciar um relatorio com todos os votos ate o momento
-        void relatorio_votos(); // ainda não sei oq vai retornar direito, talvez uma lista de ponteiros de voto
+        void relatorio_votos(char UF[2] = "NN"); // ainda não sei oq vai retornar direito, talvez uma lista de ponteiros de voto
         
         // um adm pode soliciar relatorio com top10 candidatos
+        void relatorio_candidato(Data inicio,Data fim); // ainda não sei o retorno
+
         void relatorio_candidato(); // ainda não sei o retorno
 
     private:
         //unsigned hash(unsigned key);
-        
+        void swap_cand(int n, int i);
+
+        void heapify_cand(int n, int i);
+
+        void heapSort_cand(int n);
+
         void resize_voto(); // feito 
 
-        int hash_cand(int ); // feito 
         void resize_cand(); // feito 
+
+        void resize_hash_cand();
         
         bool a_mais_recente_que_b(Data data_a, Data data_b);
+
+        int Busca_binaria_cand(int leftInx, int rightInx, int x);
+
+        int hash(int key);
+
+        int busca_por_hash(int key);
 
 };
 
