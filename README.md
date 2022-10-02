@@ -105,3 +105,5 @@ Da mesma maneira que o de cima, o gráfico abaixo apresenta um comportamento lin
 ![Relatoriotop10 - gráfico](imgs/relat10.png)
 
 Por fim, acredita-se que os gráficos mostram que os algoritmos cumpriram com a complexidade esperada. Além disso, acredita-se que os outliers encontrados no gráfico se referem ao momento em que acontecem os resizes.
+
+*[Esse projeto foi desenvolvido como atividade da disciplina de Análise de Algoritmos da FGV-EMAp]*
