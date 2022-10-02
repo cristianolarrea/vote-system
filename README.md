@@ -5,6 +5,7 @@ O projeto desenvolvido simula um sistema de votação implementado em C++.
 ## Instalação
 
 Para compilar o programa, deve-se navegar até a pasta src e rodar
+
 ˋˋˋ
 g++ -std=c++11 main.cpp -o main
 ˋˋˋ
@@ -15,6 +16,7 @@ g++ -std=c++11 main.cpp -o main
 > afetam a execução.
 
 Após isso, para rodar o programa, execute
+
 ˋˋˋ
 ./main
 ˋˋˋ
