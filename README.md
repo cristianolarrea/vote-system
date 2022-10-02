@@ -96,6 +96,7 @@ Como previsto, a busca de votos também se comporta em tempo constante O(1).
 
 ### Relatório de todos votos computados
 Neste gráfico, podemos observar um comportamento de O(n), de forma que, em geral, o tempo foi aumentando linearmente conforme o número de dados foi crescendo.
+
 ![Relatorio - gráfico](imgs/relat.png)
 
 
