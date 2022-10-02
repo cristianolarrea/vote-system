@@ -6,9 +6,9 @@ O projeto desenvolvido simula um sistema de votação implementado em C++.
 
 Para compilar o programa, deve-se navegar até a pasta src e rodar
 
-ˋˋˋ
+```
 g++ -std=c++11 main.cpp -o main
-ˋˋˋ
+```
 
 > Atenção: nesse momento, recebe-se alguns warnings referentes a operações e transformações com char[] que seriam corrigidos
 > utilizando pacotes de string, como o string.h. Entretanto, o grupo preferiu por não utilizar nenhum pacote de strings nesse 
@@ -17,9 +17,9 @@ g++ -std=c++11 main.cpp -o main
 
 Após isso, para rodar o programa, execute
 
-ˋˋˋ
+```
 ./main
-ˋˋˋ
+```
 
 ## Modelagem Geral
 
