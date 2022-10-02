@@ -12,7 +12,7 @@ class Timer {
 
         double ms;
 
-        void Stop();
+        double Stop();
 
         std::chrono::time_point< std::chrono::high_resolution_clock> m_StartTimepoint;
 };
